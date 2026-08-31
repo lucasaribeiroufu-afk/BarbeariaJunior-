@@ -1,0 +1,6 @@
+{
+  "name": "13302 Studio - Barbearia, Agendamento & Loja",
+  "description": "App oficial do 13302 Studio para agendamento de cortes de cabelo, visagismo, atendimento VIP, loja e-commerce de produtos premium, galeria de estilos old-money e atendimento WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
