@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ProductPhoto } from './ProductPhoto';
 import { Plus, Check, ShoppingBag, Star, Sparkles, Filter, X, ArrowRight, Search } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { PRODUCTS } from '../data/mockData';
@@ -17,7 +18,7 @@ export const StoreSection: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [addedNotice, setAddedNotice] = useState<string | null>(null);
 
-  const categories: ProductCategory[] = ['TODOS', 'STYLING', 'BARBA', 'CABELO', 'VESTUARIO', 'KITS'];
+  const categories: ProductCategory[] = ['TODOS', ...Array.from(new Set(PRODUCTS.map(product => product.category)))];
 
   const filteredProducts = PRODUCTS.filter((product) => {
     const matchesCategory = selectedStoreCategory === 'TODOS' || product.category === selectedStoreCategory;
@@ -145,15 +146,10 @@ export const StoreSection: React.FC = () => {
                 className="group bg-[#121215] border border-[#27272a] hover:border-[#c5a059]/70 rounded-sm overflow-hidden flex flex-col justify-between transition-all duration-400 ease-out hover:-translate-y-1.5 hover:shadow-[0_16px_36px_rgba(0,0,0,0.7),0_0_24px_rgba(197,160,89,0.1)] cursor-pointer relative"
               >
                 {/* Product Image Area with smooth zoom and subtle ambient glow */}
-                <div className="relative aspect-square w-full bg-[#0a0a0c] overflow-hidden p-6 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#121215] via-transparent to-transparent opacity-60 pointer-events-none z-10" />
+                <div className="relative aspect-square w-full bg-white overflow-hidden p-4 flex items-center justify-center">
                   
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-500 ease-out relative z-0"
-                    loading="lazy"
-                  />
+                  
+                  <ProductPhoto product={product} className="w-full h-full group-hover:scale-105 transition-transform duration-500" />
                   
                   {product.isBestSeller && (
                     <div className="absolute top-2.5 left-2.5 z-20 bg-[#c5a059] text-black text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-sm shadow-sm transition-transform duration-300 group-hover:scale-105">
@@ -161,10 +157,7 @@ export const StoreSection: React.FC = () => {
                     </div>
                   )}
 
-                  <div className="absolute top-2.5 right-2.5 z-20 flex items-center gap-1 text-[10px] text-[#e0be77] bg-black/70 backdrop-blur-xs border border-[#27272a] px-2 py-0.5 rounded transition-colors duration-300 group-hover:border-[#c5a059]/40">
-                    <Star className="w-3 h-3 fill-[#c5a059] text-[#c5a059]" />
-                    <span className="font-semibold">{product.rating}</span>
-                  </div>
+                  {product.reviewsCount > 0 && <div className="absolute top-2.5 right-2.5 z-20 text-xs text-[#e0be77] bg-black/70 px-2 py-1">★ {product.rating}</div>}
                 </div>
 
                 {/* Product Info */}
@@ -174,7 +167,7 @@ export const StoreSection: React.FC = () => {
                       {product.category}
                     </div>
                     
-                    <h3 className="font-serif text-xl sm:text-2xl font-normal text-[#f4f4f5] group-hover:text-[#e0be77] transition-colors duration-300 leading-tight line-clamp-1">
+                    <h3 className="font-serif text-xl sm:text-2xl font-normal text-[#f4f4f5] group-hover:text-[#e0be77] transition-colors duration-300 leading-tight">
                       {product.name}
                     </h3>
 
@@ -218,7 +211,7 @@ export const StoreSection: React.FC = () => {
       {/* Product Detail Modal */}
       {selectedProductDetail && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-fade-in">
-          <div className="relative max-w-2xl w-full bg-[#121215] border border-[#27272a] rounded-sm overflow-hidden shadow-2xl">
+          <div className="relative max-w-3xl w-full max-h-[92vh] overflow-y-auto bg-[#121215] border border-[#27272a] rounded-sm shadow-2xl">
             {/* Close Button */}
             <button
               onClick={closeProductDetail}
@@ -229,11 +222,7 @@ export const StoreSection: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2">
               <div className="bg-[#0c0c0e] p-8 flex items-center justify-center relative">
-                <img
-                  src={selectedProductDetail.image}
-                  alt={selectedProductDetail.name}
-                  className="max-h-64 object-contain"
-                />
+                <ProductPhoto product={selectedProductDetail} className="w-full h-64" />
                 {selectedProductDetail.volume && (
                   <span className="absolute bottom-3 left-3 bg-[#18181c] border border-[#27272a] text-[10px] text-[#a1a1aa] px-2 py-0.5 rounded">
                     {selectedProductDetail.volume}
@@ -250,15 +239,8 @@ export const StoreSection: React.FC = () => {
                     {selectedProductDetail.name}
                   </h3>
 
-                  <div className="flex items-center gap-2 my-2 text-xs text-[#a1a1aa]">
-                    <div className="flex items-center text-[#e0be77]">
-                      <Star className="w-3.5 h-3.5 fill-[#c5a059] text-[#c5a059]" />
-                      <span className="ml-1 font-semibold">{selectedProductDetail.rating}</span>
-                    </div>
-                    <span>•</span>
-                    <span>{selectedProductDetail.reviewsCount} avaliações</span>
-                    <span>•</span>
-                    <span className="text-emerald-400 font-medium">Em estoque ({selectedProductDetail.stock} un.)</span>
+                  <div className="my-3 text-xs text-[#a1a1aa]">
+                    {selectedProductDetail.stock > 0 ? `Em estoque (${selectedProductDetail.stock} un.)` : 'Consulte a disponibilidade com o Studio.'}
                   </div>
 
                   <p className="text-xs text-[#d4d4d8] leading-relaxed mt-3">

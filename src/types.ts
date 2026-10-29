@@ -60,6 +60,7 @@ export interface Product {
   howToUse?: string;
   volume?: string;
   image: string;
+  imageFrame?: { width: number; height: number; sourceHeight: number };
   stock: number;
   rating: number;
   reviewsCount: number;

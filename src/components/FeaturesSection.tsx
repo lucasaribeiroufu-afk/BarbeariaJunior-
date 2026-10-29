@@ -5,7 +5,7 @@ import { BARBERS } from '../data/mockData';
 
 export const FeaturesSection: React.FC = () => {
   const { openBooking } = useApp();
-  const masterBarber = BARBERS[0]; // Ademir Siqueira
+  const masterBarber = BARBERS[0]; // Único responsável pelos cortes
 
   const features = [
     {
@@ -104,12 +104,7 @@ export const FeaturesSection: React.FC = () => {
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className="absolute -bottom-2 inset-x-0 flex justify-center">
-                <div className="bg-[#c5a059] text-[#09090b] font-bold text-[11px] uppercase tracking-wider px-3 py-0.5 rounded-full flex items-center gap-1 shadow-md">
-                  <Star className="w-3.5 h-3.5 fill-[#09090b]" />
-                  <span>★ 5</span>
-                </div>
-              </div>
+              
             </div>
 
             {/* Profile Info */}
@@ -117,22 +112,14 @@ export const FeaturesSection: React.FC = () => {
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
                 <div>
                   <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#c5a059] block mb-1 font-sans">
-                    PROFISSIONAL ASSINATURA
+                    ÚNICO RESPONSÁVEL PELOS CORTES
                   </span>
                   <h3 className="font-serif text-3xl sm:text-4xl text-[#f4f4f5] font-light">
                     {masterBarber.name}
                   </h3>
                 </div>
 
-                <div className="flex items-center justify-center md:justify-end gap-1.5 text-[#e0be77]">
-                  <div className="flex items-center gap-0.5">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#c5a059] text-[#c5a059]" />
-                    ))}
-                  </div>
-                  <span className="text-sm font-semibold text-[#f4f4f5] ml-1">★ 5.0</span>
-                  <span className="text-xs text-[#71717a]">({masterBarber.reviewsCount} avaliações)</span>
-                </div>
+                
               </div>
 
               {/* Role */}
@@ -166,7 +153,7 @@ export const FeaturesSection: React.FC = () => {
                   id="btn-agendar-ademir"
                 >
                   <Calendar className="w-3.5 h-3.5" />
-                  <span>Agendar com Ademir</span>
+                  <span>Agendar com Ademir Júnior</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>

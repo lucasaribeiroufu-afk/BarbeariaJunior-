@@ -291,8 +291,8 @@ export const BookingModal: React.FC = () => {
           {step === 2 && (
             <div className="space-y-6 animate-fade-in">
               <div>
-                <h3 className="font-serif text-2xl text-[#f4f4f5] mb-1">Selecione o profissional</h3>
-                <p className="text-xs text-[#a1a1aa]">Nossos especialistas são certificados em visagismo e estilo old-money.</p>
+                <h3 className="font-serif text-2xl text-[#f4f4f5] mb-1">Seu profissional</h3>
+                <p className="text-xs text-[#a1a1aa]">Todos os cortes são realizados exclusivamente por Ademir Júnior.</p>
               </div>
 
               <div className="space-y-3">
@@ -315,9 +315,7 @@ export const BookingModal: React.FC = () => {
                       <div>
                         <div className="font-serif text-lg text-[#f4f4f5] flex items-center gap-2">
                           {barber.name}
-                          <span className="text-[10px] text-[#c5a059] bg-[#c5a059]/10 px-2 py-0.5 rounded font-sans font-medium">
-                            ★ {barber.rating}
-                          </span>
+                          
                         </div>
                         <div className="text-xs text-[#c5a059]">{barber.role}</div>
                         <div className="text-[11px] text-[#a1a1aa] mt-1">{barber.bio}</div>

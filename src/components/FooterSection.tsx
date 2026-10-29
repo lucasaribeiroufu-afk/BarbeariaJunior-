@@ -140,7 +140,7 @@ export const FooterSection: React.FC = () => {
                   }}
                   className="hover:text-[#c5a059] transition-colors"
                 >
-                  Shampoos & Tônicos Antiqueda
+                  Shampoo & Condicionador
                 </button>
               </li>
               <li>
@@ -151,7 +151,7 @@ export const FooterSection: React.FC = () => {
                   }}
                   className="hover:text-[#c5a059] transition-colors"
                 >
-                  Kits Presente Old Money
+                  Kit Shampoo + Condicionador
                 </button>
               </li>
             </ul>

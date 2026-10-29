@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ProductPhoto } from './ProductPhoto';
 import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight, ShieldCheck, Tag } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -109,11 +110,7 @@ export const CartDrawer: React.FC = () => {
                   key={item.product.id}
                   className="p-4 bg-[#141418] border border-[#27272a] rounded-sm flex items-center gap-4 transition-all"
                 >
-                  <img
-                    src={item.product.image}
-                    alt={item.product.name}
-                    className="w-16 h-16 object-contain bg-[#09090b] rounded p-1 border border-[#27272a]"
-                  />
+                  <ProductPhoto product={item.product} className="w-16 h-16 shrink-0 bg-white rounded p-1 border border-[#27272a]" />
 
                   <div className="flex-1 min-w-0">
                     <span className="text-[9px] uppercase font-bold tracking-wider text-[#c5a059]">
