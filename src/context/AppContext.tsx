@@ -70,48 +70,9 @@ const LOCAL_STORAGE_KEYS = {
   ORDERS: '13302_orders_v1',
 };
 
-// Initial seed appointments so user sees a realistic booking history immediately
-const INITIAL_APPOINTMENTS: Appointment[] = [
-  {
-    id: 'APT-13302-8821',
-    service: SERVICES[3], // Visagismo
-    barber: BARBERS[0],
-    date: '2026-09-02',
-    time: '15:00',
-    customerName: 'Cliente 13302',
-    customerPhone: '(34) 99944-8588',
-    customerEmail: 'cliente@13302studio.com',
-    notes: 'Primeira vez no estúdio, foco em alinhamento de corte e estilo old-money.',
-    totalPrice: 180,
-    paymentMethod: 'pix',
-    paymentStatus: 'pago',
-    status: 'confirmado',
-    createdAt: '2026-08-28T14:30:00.000Z',
-  }
-];
-
-// Initial seed order
-const INITIAL_ORDERS: Order[] = [
-  {
-    id: 'ORD-13302-9904',
-    items: [
-      { product: PRODUCTS[0], quantity: 1 }, // Pomada Old Money
-      { product: PRODUCTS[1], quantity: 1 }, // Óleo para Barba
-    ],
-    subtotal: 140,
-    discount: 0,
-    shippingFee: 0,
-    total: 140,
-    customerName: 'Cliente 13302',
-    customerPhone: '(34) 99944-8588',
-    customerEmail: 'cliente@13302studio.com',
-    deliveryMethod: 'retirada',
-    paymentMethod: 'pix',
-    paymentStatus: 'pago',
-    status: 'pronto_retirada',
-    createdAt: '2026-08-27T11:15:00.000Z',
-  }
-];
+// Start with actual user records only; do not seed fictional bookings or orders.
+const INITIAL_APPOINTMENTS: Appointment[] = [];
+const INITIAL_ORDERS: Order[] = [];
 
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // Cart state
@@ -155,7 +116,17 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [selectedProductDetail, setSelectedProductDetail] = useState<Product | null>(null);
   const [selectedGalleryItem, setSelectedGalleryItem] = useState<GalleryItem | null>(null);
   const [selectedStoreCategory, setSelectedStoreCategory] = useState<string>('TODOS');
-  const [activeSection, setActiveSection] = useState<string>('hero');
+  const routeFromHash = () => {
+    const key = window.location.hash.slice(1);
+    const aliases: Record<string,string> = { avaliacoes: 'contato', instagram: 'portfolio' };
+    return aliases[key] || (['hero','servicos','sobre','portfolio','loja','contato'].includes(key) ? key : 'hero');
+  };
+  const [activeSection, setActiveSection] = useState<string>(routeFromHash);
+  useEffect(() => {
+    const syncRoute = () => { setActiveSection(routeFromHash()); setIsSidebarOpen(false); };
+    window.addEventListener('hashchange', syncRoute);
+    return () => window.removeEventListener('hashchange', syncRoute);
+  }, []);
 
   // Persistence to localStorage
   useEffect(() => {
@@ -314,11 +285,14 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const scrollToSection = (sectionId: string) => {
     setIsSidebarOpen(false);
-    setActiveSection(sectionId);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    const aliases: Record<string,string> = { avaliacoes: 'contato', instagram: 'portfolio' };
+    const route = aliases[sectionId] || sectionId;
+    if (activeSection === route) {
+      window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      return;
     }
+    setActiveSection(route);
+    window.location.hash = route;
   };
 
   return (
