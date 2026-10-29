@@ -1,4 +1,5 @@
 import React from 'react';
+import { StudioLogo } from './StudioLogo';
 import { 
   X, 
   Scissors, 
@@ -58,9 +59,7 @@ export const Sidebar: React.FC = () => {
           {/* Drawer Header */}
           <div className="p-6 border-b border-[#27272a] flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full border border-[#c5a059] flex items-center justify-center text-[#c5a059] font-serif text-sm">
-                13
-              </div>
+              <StudioLogo className="w-16 h-16" />
               <div>
                 <h2 className="font-serif text-lg tracking-widest text-[#f4f4f5] uppercase font-semibold">
                   13302 Studio

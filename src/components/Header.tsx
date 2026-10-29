@@ -1,4 +1,5 @@
 import React from 'react';
+import { StudioLogo } from './StudioLogo';
 import { ShoppingBag, Menu, Scissors, Clock, Instagram, MessageCircle, Calendar } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { STUDIO_INFO } from '../data/mockData';
@@ -18,23 +19,9 @@ export const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Brand / Logo */}
-        <div 
-          onClick={() => scrollToSection('hero')} 
-          className="flex items-center gap-3 cursor-pointer group"
-          id="btn-header-logo"
-        >
-          <div className="w-10 h-10 rounded-full border border-[#c5a059] flex items-center justify-center text-[#c5a059] font-serif text-lg tracking-widest bg-black/40 group-hover:scale-105 group-hover:border-[#e0be77] transition-all">
-            13
-          </div>
-          <div className="flex flex-col">
-            <span className="font-serif text-lg sm:text-xl tracking-[0.2em] font-semibold text-[#f4f4f5] group-hover:text-[#c5a059] transition-colors leading-tight">
-              13302
-            </span>
-            <span className="text-[10px] tracking-[0.3em] text-[#a1a1aa] font-sans font-medium uppercase">
-              STUDIO
-            </span>
-          </div>
-        </div>
+        <button type="button" onClick={() => scrollToSection('hero')} aria-label="13302 Studio — Início" className="flex shrink-0 items-center cursor-pointer" id="btn-header-logo">
+          <StudioLogo className="w-16 h-16 sm:w-[72px] sm:h-[72px]" />
+        </button>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8 text-xs tracking-[0.15em] font-medium uppercase text-[#d4d4d8]">

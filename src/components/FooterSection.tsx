@@ -1,4 +1,5 @@
 import React from 'react';
+import { StudioLogo } from './StudioLogo';
 import { ArrowRight, Instagram, Phone, MapPin, Clock, ShieldCheck, Heart } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { STUDIO_INFO, SERVICES } from '../data/mockData';
@@ -44,9 +45,7 @@ export const FooterSection: React.FC = () => {
           {/* Col 1: Studio Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full border border-[#c5a059] flex items-center justify-center text-[#c5a059] font-serif text-lg font-bold">
-                13
-              </div>
+              <StudioLogo className="w-24 h-24" />
               <div className="font-serif text-xl font-medium tracking-widest text-[#f4f4f5]">
                 13302 STUDIO
               </div>
