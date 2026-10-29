@@ -4,12 +4,12 @@ import ademirAvatar from '../assets/images/ademir_siqueira_real_photo_1788025353
 export const STUDIO_INFO = {
   name: '13302 STUDIO',
   slogan: 'Mais que um corte, uma experiência única.',
-  subtitle: 'No 13302 Studio combinamos técnica, visagismo e um ritual old-money para elevar sua presença.',
+  subtitle: 'Experiências personalizadas para homens que valorizam elegância, imagem e exclusividade.',
   tagline: 'ATENDIMENTO VIP · VISAGISMO · EXCLUSIVIDADE',
   instagramHandle: '@13302studio',
   instagramUrl: 'https://www.instagram.com/13302studio',
-  whatsappNumber: '55034999448588',
-  whatsappUrl: 'https://wa.me/55034999448588',
+  whatsappNumber: '5534999448588',
+  whatsappUrl: 'https://wa.me/5534999448588',
   phoneDisplay: '(34) 99944-8588',
   address: 'Rua Santos Dumont, 1302 - Centro',
   hours: 'Seg a Sáb: 09:00 às 20:00',
@@ -18,81 +18,78 @@ export const STUDIO_INFO = {
 
 export const SERVICES: Service[] = [
   {
-    id: 'corte-classico',
-    name: 'Corte Clássico',
-    category: 'cabelo',
-    durationMin: 45,
-    price: 60,
-    description: 'Corte masculino tradicional com acabamento na navalha.',
-    highlights: ['Lavagem inclusa', 'Finalização com pomada', 'Navalha de precisão'],
+    "id": "corte-classico",
+    "name": "Corte Signature",
+    "category": "cabelo",
+    "durationMin": 40,
+    "price": 35,
+    "description": "Corte masculino personalizado, executado com técnica refinada e acabamento preciso. Um serviço pensado para destacar sua identidade e manter um visual impecável."
   },
   {
-    id: 'corte-barba',
-    name: 'Corte + Barba',
-    category: 'combos',
-    durationMin: 75,
-    price: 95,
-    description: 'Combo completo: corte de cabelo e desenho de barba com toalha quente.',
-    highlights: ['Toalha quente aromática', 'Óleo e balm premium', 'Massagem facial rápida'],
-    popular: true,
+    "id": "corte-barba",
+    "name": "Experiência Executiva",
+    "category": "combos",
+    "durationMin": 60,
+    "price": 60,
+    "description": "A combinação perfeita entre cuidado e sofisticação. Inclui Corte Signature e Barboterapia Premium, proporcionando um visual completo, alinhado e elegante.",
+    "popular": true
   },
   {
-    id: 'barba-desenhada',
-    name: 'Barba Desenhada',
-    category: 'barba',
-    durationMin: 30,
-    price: 45,
-    description: 'Modelagem, aparo e finalização com produtos premium.',
-    highlights: ['Alinhamento perfeito', 'Hidratação profunda', 'Toalha quente'],
+    "id": "barba-desenhada",
+    "name": "Barboterapia Premium",
+    "category": "barba",
+    "durationMin": 30,
+    "price": 35,
+    "description": "Experiência dedicada à barba, com preparação da pele, toalha quente, modelagem personalizada, acabamento na navalha e finalização com produtos premium."
   },
   {
-    id: 'visagismo',
-    name: 'Visagismo',
-    category: 'visagismo',
-    durationMin: 60,
-    price: 180,
-    description: 'Consultoria de imagem personalizada com análise de rosto e estilo para desenhar o corte que valoriza sua identidade.',
-    highlights: ['Mapeamento facial', 'Consultoria de estilo pessoal', 'Corte sob medida'],
-    popular: true,
+    "id": "visagismo",
+    "name": "Consultoria Visagista",
+    "category": "visagismo",
+    "durationMin": 60,
+    "price": 50,
+    "description": "Análise personalizada das proporções faciais, estilo de vida e objetivos de imagem para desenvolver um visual autêntico, equilibrado e alinhado à sua personalidade."
   },
   {
-    id: 'atendimento-vip',
-    name: 'Atendimento VIP',
-    category: 'vip',
-    durationMin: 120,
-    price: 250,
-    description: 'Experiência exclusiva: corte, barba, hidratação profunda, esfoliação facial e bebida de cortesia em cabine privativa.',
-    highlights: ['Reserva de sala privativa', 'Bebida premium de cortesia', 'Ritual completo de bem-estar'],
-    vip: true,
+    "id": "atendimento-vip",
+    "name": "Experiência The Gentleman",
+    "category": "vip",
+    "durationMin": 120,
+    "price": 150,
+    "description": "A experiência mais exclusiva da 13302 Studio. Combina corte personalizado, barboterapia premium, hidratação capilar, tratamento facial revitalizante e atendimento reservado em ambiente privativo.",
+    "highlights": [
+      "Atendimento exclusivo",
+      "Bebida premium de cortesia",
+      "Tratamento completo de imagem e bem-estar"
+    ],
+    "vip": true
   },
   {
-    id: 'old-money-hairstyle',
-    name: 'Old Money Hairstyle',
-    category: 'cabelo',
-    durationMin: 60,
-    price: 120,
-    description: 'Penteado assinatura estilo old money com acabamento milimétrico e finalização em pomada matte importada.',
-    highlights: ['Texturização com tesoura japonesa', 'Alinhamento clássico', 'Fixação duradoura'],
-    popular: true,
+    "id": "old-money-hairstyle",
+    "name": "Assinatura Old Money",
+    "category": "cabelo",
+    "durationMin": 60,
+    "price": 120,
+    "description": "Inspirado na elegância masculina clássica, o Old Money Hairstyle combina corte de precisão, texturização estratégica e finalização personalizada para criar um visual sofisticado, natural e atemporal.",
+    "highlights": [
+      "Estilo clássico e elegante",
+      "Acabamento premium",
+      "Fixação natural e duradoura (Escova + Pomada)"
+    ]
   },
   {
-    id: 'camuflagem-grisalhos',
-    name: 'Camuflagem de Grisalhos',
-    category: 'cabelo',
-    durationMin: 40,
-    price: 75,
-    description: 'Tratamento sutil para uniformização natural dos fios brancos sem aspecto artificial.',
-    highlights: ['Resultado discreto', 'Pigmentação sem amônia', 'Durabilidade de 4 semanas'],
-  },
-  {
-    id: 'ritual-toalha-quente',
-    name: 'Ritual Barbaterapia Ozônio',
-    category: 'barba',
-    durationMin: 40,
-    price: 65,
-    description: 'Tratamento relaxante com vapor de ozônio, óleos essenciais e toalha quente para abertura dos poros.',
-    highlights: ['Vapor de ozônio antibacteriano', 'Alívio de foliculite', 'Massagem revigorante'],
-  },
+    "id": "camuflagem-grisalhos",
+    "name": "Pintura ou Camuflagem Premium de Grisalhos",
+    "category": "cabelo",
+    "durationMin": 40,
+    "price": 50,
+    "description": "Procedimento desenvolvido para suavizar fios brancos de forma discreta, preservando a naturalidade e a harmonia da imagem masculina.",
+    "highlights": [
+      "Resultado sutil e sofisticado",
+      "Sem efeito artificial",
+      "Aparência mais jovem e elegante"
+    ]
+  }
 ];
 
 export const BARBERS: Barber[] = [
@@ -262,7 +259,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     imageUrl: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&auto=format&fit=crop&q=80',
     likes: 342,
     tags: ['Old Money', 'Clássico', 'Visagismo'],
-    serviceReferenceName: 'Old Money Hairstyle',
+    serviceReferenceName: 'Assinatura Old Money',
     serviceId: 'old-money-hairstyle',
   },
   {
@@ -273,7 +270,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     imageUrl: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&auto=format&fit=crop&q=80',
     likes: 289,
     tags: ['Barba', 'Navalha', 'Ritual'],
-    serviceReferenceName: 'Barba Desenhada',
+    serviceReferenceName: 'Barboterapia Premium',
     serviceId: 'barba-desenhada',
   },
   {
@@ -284,7 +281,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     imageUrl: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=800&auto=format&fit=crop&q=80',
     likes: 415,
     tags: ['Tesoura', 'Textura', 'Natural'],
-    serviceReferenceName: 'Corte Clássico',
+    serviceReferenceName: 'Corte Signature',
     serviceId: 'corte-classico',
   },
   {
@@ -295,7 +292,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     imageUrl: 'https://images.unsplash.com/photo-1517832606299-7ae9b720a186?w=800&auto=format&fit=crop&q=80',
     likes: 520,
     tags: ['Corte + Barba', 'Fade', 'Harmonização'],
-    serviceReferenceName: 'Corte + Barba',
+    serviceReferenceName: 'Experiência Executiva',
     serviceId: 'corte-barba',
   },
   {
@@ -306,7 +303,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     imageUrl: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=800&auto=format&fit=crop&q=80',
     likes: 388,
     tags: ['VIP', 'Privacidade', 'Bebida Cortesia'],
-    serviceReferenceName: 'Atendimento VIP',
+    serviceReferenceName: 'Experiência The Gentleman',
     serviceId: 'atendimento-vip',
   },
   {
@@ -317,7 +314,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     imageUrl: 'https://images.unsplash.com/photo-1621607512214-68297480165e?w=800&auto=format&fit=crop&q=80',
     likes: 310,
     tags: ['Produtos', 'Pomada', 'Finalização'],
-    serviceReferenceName: 'Old Money Hairstyle',
+    serviceReferenceName: 'Assinatura Old Money',
     serviceId: 'old-money-hairstyle',
   },
 ];

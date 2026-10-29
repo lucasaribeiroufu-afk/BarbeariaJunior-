@@ -41,11 +41,12 @@ export const FeaturesSection: React.FC = () => {
             Diferenciais 13302
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-[#f4f4f5] tracking-tight">
-            O Padrão <span className="italic text-[#e0be77]">Old Money</span>
+            Sobre a <span className="italic text-[#e0be77]">13302 Studio</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[#a1a1aa] font-sans">
-            Redefinimos o cuidado masculino através de precisão técnica e hospitalidade de alto nível.
+            Na 13302 Studio, cada atendimento é conduzido com atenção aos detalhes, técnica apurada e compromisso com a excelência.
           </p>
+          <p className="mt-4 text-sm sm:text-base text-[#a1a1aa] leading-relaxed">Mais do que uma barbearia, oferecemos experiências personalizadas para homens que buscam elegância, confiança e distinção.</p>
         </div>
 
         {/* 3 Cards Grid Matching Image 2 */}

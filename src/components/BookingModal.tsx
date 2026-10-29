@@ -209,19 +209,23 @@ export const BookingModal: React.FC = () => {
           {step === 1 && (
             <div className="space-y-6 animate-fade-in">
               <div>
-                <h3 className="font-serif text-2xl text-[#f4f4f5] mb-1">Escolha o serviço principal</h3>
-                <p className="text-xs text-[#a1a1aa]">Selecione o ritual desejado para a sua experiência no studio.</p>
+                <h3 className="font-serif text-2xl text-[#f4f4f5] mb-1">Escolha Sua Experiência</h3>
+                <p className="text-xs text-[#a1a1aa]">Excelência, precisão e cuidado em cada detalhe. Serviços desenvolvidos para homens que valorizam imagem, elegância e bem-estar.</p>
               </div>
 
               <div className="space-y-3">
                 {SERVICES.map((service) => (
                   <div
                     key={service.id}
-                    onClick={() => setSelectedService(service)}
+                    onClick={() => { setSelectedService(service); setAdditionalServices(prev => prev.filter(s => s.id !== service.id)); }}
+                    role="button"
+                    tabIndex={0}
+                    aria-pressed={selectedService.id === service.id}
+                    onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSelectedService(service); setAdditionalServices(prev => prev.filter(s => s.id !== service.id)); } }}
                     className={`p-4 rounded-sm border transition-all cursor-pointer flex items-center justify-between ${
                       selectedService.id === service.id
                         ? 'border-[#c5a059] bg-[#1a1712]'
-                        : 'border-[#27272a] bg-[#141418] hover:border-[#3f3f46]'
+                        : service.vip ? 'border-[#c5a059] bg-[#241e13]' : 'border-[#27272a] bg-[#141418] hover:border-[#3f3f46]'
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -233,8 +237,9 @@ export const BookingModal: React.FC = () => {
                         {selectedService.id === service.id && <Check className="w-3 h-3 stroke-[3]" />}
                       </div>
                       <div>
+                        {(service.vip || service.popular || service.id === 'old-money-hairstyle') && <span className="block text-[10px] uppercase tracking-widest text-[#e0be77] mb-2">{service.vip ? 'Experiência Exclusiva' : service.popular ? 'Recomendado' : 'Experiência Premium'}</span>}
                         <div className="font-serif text-lg text-[#f4f4f5]">{service.name}</div>
-                        <div className="text-xs text-[#a1a1aa] flex items-center gap-2">
+                        <div className="text-xs text-[#a1a1aa] flex flex-wrap items-center gap-2">
                           <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-[#c5a059]" /> {service.durationMin} min</span>
                           <span>•</span>
                           <span>{service.description}</span>
@@ -242,7 +247,7 @@ export const BookingModal: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="font-serif text-xl font-medium text-[#c5a059]">
+                    <div className="font-serif text-lg font-medium text-[#c5a059] shrink-0 ml-3">
                       R$ {service.price}
                     </div>
                   </div>
