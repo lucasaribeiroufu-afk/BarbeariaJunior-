@@ -70,7 +70,7 @@ const LOCAL_STORAGE_KEYS = {
   ORDERS: '13302_orders_v1',
 };
 
-// Start with actual user records only; do not seed fictional bookings or orders.
+// New visitors start with their own records.
 const INITIAL_APPOINTMENTS: Appointment[] = [];
 const INITIAL_ORDERS: Order[] = [];
 
@@ -116,17 +116,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [selectedProductDetail, setSelectedProductDetail] = useState<Product | null>(null);
   const [selectedGalleryItem, setSelectedGalleryItem] = useState<GalleryItem | null>(null);
   const [selectedStoreCategory, setSelectedStoreCategory] = useState<string>('TODOS');
-  const routeFromHash = () => {
-    const key = window.location.hash.slice(1);
-    const aliases: Record<string,string> = { avaliacoes: 'contato', instagram: 'portfolio' };
-    return aliases[key] || (['hero','servicos','sobre','portfolio','loja','contato'].includes(key) ? key : 'hero');
-  };
-  const [activeSection, setActiveSection] = useState<string>(routeFromHash);
-  useEffect(() => {
-    const syncRoute = () => { setActiveSection(routeFromHash()); setIsSidebarOpen(false); };
-    window.addEventListener('hashchange', syncRoute);
-    return () => window.removeEventListener('hashchange', syncRoute);
-  }, []);
+  const [activeSection, setActiveSection] = useState<string>('hero');
 
   // Persistence to localStorage
   useEffect(() => {
@@ -285,14 +275,14 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const scrollToSection = (sectionId: string) => {
     setIsSidebarOpen(false);
-    const aliases: Record<string,string> = { avaliacoes: 'contato', instagram: 'portfolio' };
-    const route = aliases[sectionId] || sectionId;
-    if (activeSection === route) {
-      window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-      return;
+    setActiveSection(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.dispatchEvent(new CustomEvent('studio:navigate', { detail: sectionId }));
+      if (reduced) element.scrollIntoView({ behavior: 'auto' });
+      else window.setTimeout(() => element.scrollIntoView({ behavior: 'instant' as ScrollBehavior }), 180);
     }
-    setActiveSection(route);
-    window.location.hash = route;
   };
 
   return (
